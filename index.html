@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+ 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+ 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 </head>
  <body>
+ 	<script>
+	  $(document).ready(function() {
+	  		$.ajax({
+	     		type: "GET",
+	     		url: "http://search.twitter.com/search.json?q=qc2012&rpp=50&include_entities=true&result_type=mixed",
+	     		async: false,
+	     		beforeSend: function(x) {
+	      		if(x && x.overrideMimeType) {
+	       			x.overrideMimeType("application/j-son;charset=UTF-8");
+	      		}
+	 			},
+	 			dataType: "jsonp",
+	 			success: function(data){
+	            console.log(data);
+	    		$.each(data.results, function(i, tweet) {
+	            	var content = "";
+		            content += tweet.from_user_name + " ";
+		            content += tweet.text;
+		            content += "<br><br>";
+		            $("#tweets").append(content);
+	          		});
+	 			}
+			});
+	  });
+  </script>
+  <div id="tweets"></div>
  </body>
 </html
