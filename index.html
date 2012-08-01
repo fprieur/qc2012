@@ -11,20 +11,22 @@
 	  $(document).ready(function() {
 	  		$.ajax({
 	     		type: "GET",
-	     		url: "http://search.twitter.com/search.json?q=qc2012&rpp=50&include_entities=true&result_type=mixed",
+	     		url: "qc2012.json",
 	     		async: false,
 	     		beforeSend: function(x) {
 	      		if(x && x.overrideMimeType) {
 	       			x.overrideMimeType("application/j-son;charset=UTF-8");
 	      		}
 	 			},
-	 			dataType: "jsonp",
+	 			dataType: "json",
 	 			success: function(data){
 	            console.log(data);
-	    		$.each(data.results, function(i, tweet) {
+	    		$.each(data, function(i, tweet) {
 	            	var content = "";
-		            content += tweet.from_user_name + " ";
+	            	content += "<img src='"+tweet.profile_image_url+"'>"+"<br>"
+		            content += tweet.from_user_name + "<br>";
 		            content += tweet.text;
+		            //content += tweet.results.text;
 		            content += "<br><br>";
 		            $("#tweets").append(content);
 	          		});
