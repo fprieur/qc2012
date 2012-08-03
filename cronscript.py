@@ -10,7 +10,7 @@ def tweetsqc2012():
   		objects_list.append(result)
 
   	j = json.dumps(objects_list)
-	f = open("qc2012.json",'w')
+	f = open("/var/www/qc2012/qc2012.json",'w')
 	f.write(j)
 	f.close()
 
