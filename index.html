@@ -8,7 +8,8 @@
 </head>
  <body>
  	<script>
-	  $(document).ready(function() {
+	  	$(document).ready(function() {
+	  		// lecture du fichier json et ajout dans le dom
 	  		$.ajax({
 	     		type: "GET",
 	     		url: "qc2012.json",
@@ -26,14 +27,19 @@
 	            	content += "<img src='"+tweet.profile_image_url+"'>"+"<br>"
 		            content += tweet.from_user_name + "<br>";
 		            content += tweet.text;
-		            //content += tweet.results.text;
 		            content += "<br><br>";
 		            $("#tweets").append(content);
 	          		});
 	 			}
 			});
-	  });
+			// Lire le ficheir .txt et le mettre dans le dom
+			$.get('updateDate.txt', function(data) {
+				$("#modifDate").append(data);
+				$("#modifDate").append("<br><br>");
+			});
+	  	});
   </script>
+  <div id="modifDate"></div>
   <div id="tweets"></div>
  </body>
 </html

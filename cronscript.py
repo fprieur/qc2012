@@ -20,7 +20,7 @@ def tweetsqc2012():
 
 	now = datetime.datetime.now()
 	f2 = open(chemin +  "updateDate.txt",'w')
-	f2.write("Dernière mise à jour le : " + str(now.day) + " " +  toolbox.moisEnFrancais(now.month) + " " + str(now.year) + " " + "à " + str(now.hour) + ":" + str(now.minute))
+	f2.write("Dernière mise à jour le : " + str(now.day) + " " +  toolbox.moisEnFrancais(now.month) + " " + str(now.year) + " " + "à " + str("%02d" %(now.hour)) + ":" + str("%02d" %(now.minute)))
 	f2.close
 
 
