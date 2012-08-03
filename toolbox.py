@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import datetime
-import os
+import getpass
 
 def moisEnFrancais(intMois):
 	if (intMois == 1):
@@ -31,6 +31,6 @@ def moisEnFrancais(intMois):
 
 def determinerEnvironnement():
 	path = ""
-	if(str(os.getlogin()) == "ubuntu"):
+	if(getpass.getuser() == "ubuntu"):
 		path = "/var/www/qc2012/"
 	return path
