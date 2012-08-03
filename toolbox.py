@@ -31,6 +31,6 @@ def moisEnFrancais(intMois):
 
 def determinerEnvironnement():
 	path = ""
-	if(os.getlogin == "ubuntu"):
+	if(os.getlogin() == "ubuntu"):
 		path = "/var/www/qc2012/"
 	return path
