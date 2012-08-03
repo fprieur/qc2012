@@ -15,12 +15,12 @@ def tweetsqc2012():
   		objects_list.append(result)
 
   	j = json.dumps(objects_list)
-	f = open(chemin + "/var/www/qc2012/qc2012.json",'w')
+	f = open("/var/www/qc2012/qc2012.json",'w')
 	f.write(j)
 	f.close()
 
 	now = datetime.datetime.now()
-	f2 = open(chemin +  "/var/www/qc2012/updateDate.txt",'w')
+	f2 = open("/var/www/qc2012/updateDate.txt",'w')
 	f2.write("Dernière mise à jour le : " + str(now.day) + " " +  toolbox.moisEnFrancais(now.month) + " " + str(now.year) + " " + "à " + str("%02d" %(now.hour)) + ":" + str("%02d" %(now.minute)))
 	f2.close
 
